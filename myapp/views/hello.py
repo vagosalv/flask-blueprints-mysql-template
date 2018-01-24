@@ -11,7 +11,7 @@ def index_page():
 	return render_template('home.html')
 
 #About
-@hello.route('/about')
+@hello.route('/p13alva/about')
 def about():
     return render_template('about.html')
 
