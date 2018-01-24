@@ -5,7 +5,7 @@ from ..app import mysql
 
 hello = Blueprint('hello',__name__)
 
-arxikh
+#arxikh
 @hello.route('/')
 def index_page():
 	return render_template('home.html')
