@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Author</th>
+    <th>Date</th>
+    <th>Body</th>
+    <th>Article_id</th>
+    <th></th>
+  </tr>
+  {% for comment in comments %}
+    <tr>
+      <td>{{comment.id}}</td>
+      <td>{{comment.author}}</td>
+      <td>{{comment.create_date}}</td>
+      <td>{{comment.body | safe}}</td>
+      <td>{{comment.article_id}}</td>
+      {% if session['username'] == comment.author %}
+      <td><a href="edit_comment/{{comment.id}}" class="btn btn-default pull-right">Edit</a></td>
+      <td>
+        <form action="{{url_for('delete_comment', id=comment.id)}}" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete" class="btn btn-danger">
+      {% endif %}
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h3>{{comment.author}}</h3>
+<small>Written by {{comment.author}} on {{comment.create_date}}</small>
+<hr>
+<div>
+  {{comment.body | safe}}
+</div>
+<br></br>
+<hr>
+<h2>Comments</h2>
+<a class="btn btn-success" href="/add_comments"> Add Comments</a>
+<a class="btn btn-success" href="/article/{{comment.article_id}}/"> Back</a>
+{% endblock %}
