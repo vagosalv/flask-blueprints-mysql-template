@@ -18,9 +18,9 @@
       <td>{{comment.body | safe}}</td>
       <td>{{comment.article_id}}</td>
       {% if session['username'] == comment.author %}
-      <td><a href="edit_comment/{{comment.id}}" class="btn btn-default pull-right">Edit</a></td>
+      <td><a href="p13alva/edit_comment/{{comment.id}}" class="btn btn-default pull-right">Edit</a></td>
       <td>
-        <form action="{{url_for('delete_comment', id=comment.id)}}" method="post">
+        <form action="{{url_for('hello.delete_comment', id=comment.id)}}" method="post">
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" value="Delete" class="btn btn-danger">
       {% endif %}
