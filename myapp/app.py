@@ -52,9 +52,11 @@ def create_app():
 		
 	return app
 
-#secret key gia to session
-app.secret_key='secret123'
 
 mysql = MySQL()	
 app = create_app()	
+
+#secret key gia to session
+app.secret_key='secret123'
+
 	
