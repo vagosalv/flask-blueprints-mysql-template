@@ -1,6 +1,7 @@
 from flask import Blueprint,render_template,flash,url_for,session,request,logging
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
+from functools import wraps
 from ..app import mysql
 
 
@@ -130,6 +131,27 @@ def login():
 
 
     return render_template('login.html')
+
+
+#Check if user is logged_in (snippet)
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('Unauthorized, Please login', 'danger')
+            return redirect(url_for('login'))
+    return wrap
+
+
+#Logout
+@hello.route('/logout')
+@is_logged_in
+def logaout():
+    session.clear()
+    flash('You are now logged out', 'success')
+    return redirect(url_for('login'))
 
 
 
