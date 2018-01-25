@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template,flash,url_for,session,request,logging,redirect
+from flask import Blueprint, render_template, flash, url_for, session, request, logging, redirect, flask
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
