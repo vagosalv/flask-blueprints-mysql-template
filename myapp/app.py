@@ -1,4 +1,6 @@
 import os
+#prepei na mpei?
+from passlib.hash import sha256_crypt
 
 from flask import Flask
 import MySQLdb
