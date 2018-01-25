@@ -88,7 +88,7 @@ def register():
 
         flash ('You are now registered and can log in', 'Success')
 
-        redirect(url_for('index_page'))
+        redirect(url_for('hello.index_page'))
 
 
         return redirect(url_for('login'))
