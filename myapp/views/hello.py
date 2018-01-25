@@ -223,7 +223,7 @@ def edit_article(id):
         #execute
         c.execute("UPDATE articles SET title=%s, body=%s WHERE id =%s",(title, body, id))
         #commit
-        mysql.connection.commit()
+        mysql.db.commit()
         #close connection
         c.close()
         flash('Article Updated', 'success')
