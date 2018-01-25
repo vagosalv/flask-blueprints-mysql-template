@@ -173,3 +173,30 @@ def dashboard():
         return render_template('dashboard.html', msg=msg)
     #close connection
     c.close()
+
+class ArticleForm(Form):
+    title = StringField('Title', [validators.Length(min=1, max=200)])
+    body = TextAreaField('Body', [validators.Length(min=10)])
+	
+
+#Add article
+@hello.route('/add_article', methods=['GET', 'POST'])
+@is_logged_in
+def add_article():
+    form = ArticleForm(request.form)
+    if request.method == 'POST' and form.validate():
+        title = form.title.data
+        body = form.body.data
+        #Create cursor
+        c = mysql.db.cursor()
+        #execute
+        c.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)", (title, body, session['username']))
+        #commit
+        mysql.db.commit()
+        #close connection
+        c.close()
+        flash('Article created', 'success')
+        return redirect(url_for('hello.dashboard'))
+
+    return render_template('add_article.html', form=form)
+
