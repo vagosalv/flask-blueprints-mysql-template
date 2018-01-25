@@ -57,6 +57,7 @@ mysql = MySQL()
 app = create_app()	
 
 #secret key gia to session
+#if __name__ == '__main__': PREPEI NA TO VALW?
 app.secret_key='secret123'
 
 	
