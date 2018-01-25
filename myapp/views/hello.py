@@ -232,3 +232,38 @@ def edit_article(id):
     return render_template('edit_article.html', form=form)
 
 
+#Delete article
+@hello.route('/delete_article/<string:id>', methods=['POST'])
+@is_logged_in
+def delete_article(id):
+    #create cursor
+    c = mysql.db.cursor()
+    #execute
+    c.execute("DELETE FROM articles WHERE id = %s", [id])
+    #commit
+    mysql.db.commit()
+    #close connection
+    c.close()
+    flash('Article Deleted', 'success')
+    return redirect(url_for('hello.dashboard'))
+
+#Commnts Form class
+class CommentForm(Form):
+    body = TextAreaField('Body', [validators.Length(min=10)])
+
+#Articles
+@hello.route('/comments')
+def comments():
+    #Create cursor
+    c = mysql.db.cursor()
+    #Get Articles
+    result = c.execute("SELECT * FROM comments")
+    comments = c.fetchall()
+    if result > 0 :
+        return render_template('comments.html', comments=comments)
+    else:
+        msg = 'No comments Found'
+        return render_template('comments.html', msg=msg)
+    #close connection
+    c.close()
+
