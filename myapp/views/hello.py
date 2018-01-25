@@ -113,7 +113,7 @@ def login():
         if result > 0:
             #Get stored hash
             data = c.fetchone()
-            password = data['password']
+            password = data[4]#htan 'password'
 
             #Compare Passwords
             if sha256_crypt.verify(password_candidate, password):
