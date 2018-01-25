@@ -47,11 +47,6 @@ def article(id):
     result = c.execute("SELECT * FROM articles WHERE id = %s", [id])
     #Commit
     article = c.fetchone()
-    def comments(id):
-        c = mysql.db.cursor()
-        result = c.execute("SELECT * FROM comments WHERE article.id = %s", [article.id])
-        comment = c.fetchone()
-        return render_template('article.html', comment=comment)
     return render_template('article.html', article=article)
 
 
@@ -251,7 +246,7 @@ def delete_article(id):
 class CommentForm(Form):
     body = TextAreaField('Body', [validators.Length(min=10)])
 
-#Articles
+#Comments
 @hello.route('/comments')
 def comments():
     #Create cursor
