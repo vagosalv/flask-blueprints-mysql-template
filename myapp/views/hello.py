@@ -91,7 +91,7 @@ def register():
         redirect(url_for('hello.index_page'))
 
 
-        return redirect(url_for('login'))
+        return redirect(url_for('hello.login'))
     return render_template('register.html', form = form)
 
 
@@ -119,7 +119,7 @@ def login():
                 session['username'] = username
 
                 flash('You are now logged in', 'success')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('hello.dashboard'))
             else:
                 error = 'Invalid login'
                 return render_template('login.html', error=error )
@@ -141,7 +141,7 @@ def is_logged_in(f):
             return f(*args, **kwargs)
         else:
             flash('Unauthorized, Please login', 'danger')
-            return redirect(url_for('login'))
+            return redirect(url_for('hello.login'))
     return wrap
 
 
@@ -151,7 +151,22 @@ def is_logged_in(f):
 def logaout():
     session.clear()
     flash('You are now logged out', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('hello.login'))
 
 
-
+#Dashboard
+@hello.route('/dashboard')
+@is_logged_in
+def dashboard():
+    #Create cursor
+    c = mysql.db.cursor()
+    #Get Articles
+    result = c.execute("SELECT * FROM articles")
+    articles = c.fetchall()
+    if result > 0 :
+        return render_template('dashboard.html', articles=articles)
+    else:
+        msg = 'No articles Found'
+        return render_template('dashboard.html', msg=msg)
+    #close connection
+    c.close()
