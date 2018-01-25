@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template
+from flask import Blueprint,render_template,flash,url_for
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 
 from ..app import mysql
@@ -63,4 +63,32 @@ class RegisterForm(Form):
     confirm = PasswordField('Confirm Password')
 
 
+#User register
+@hello.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegisterForm(request.form)
+    if request.method == 'POST' and form.validate():
+        name = form.name.data
+        email = form.email.data
+        username = form.username.data
+        password = sha256_crypt.encrypt(str(form.password.data))
 
+        # Create cursor
+        c = mysql.db.cursor()
+
+        # Execute query
+        c.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)", (name, email, username, password))
+
+        # Commit to DB
+        mysql.db.commit()
+
+        #Close connection
+        c.close()
+
+        flash ('You are now registered and can log in', 'Success')
+
+        redirect(url_for('index'))
+
+
+        return redirect(url_for('login'))
+    return render_template('register.html', form = form)
