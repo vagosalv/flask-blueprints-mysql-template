@@ -2,6 +2,9 @@ from flask import Blueprint, Flask, render_template, flash, url_for, session, re
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+#prepei na mpei?
+from flask_mysqldb import MySQL
+
 from ..app import mysql
 
 
