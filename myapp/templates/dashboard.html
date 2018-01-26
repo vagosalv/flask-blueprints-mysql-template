@@ -21,7 +21,7 @@
         <td>{{article[2]}}</td>
         <td>{{article[4]}}</td>
         {% if session['username'] == article[2] %}
-        <td><a href="/p13alva/edit_article/{{article.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td><a href="/p13alva/edit_article/{{article[0]}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
           <form action="{{url_for('hello.delete_article', id=article[0])}}" method="post">
             <input type="hidden" name="_method" value="DELETE">
@@ -47,7 +47,7 @@
         <td>{{comment[2]}}</td>
         <td>{{comment[3]}}</td>
         {% if session['username'] == comment[1] %}
-        <td><a href="edit_comment/{{comment.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td><a href="edit_comment/{{comment[0]}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
           <form action="{{url_for('hello.delete_comment', id=comment[0])}}" method="post">
             <input type="hidden" name="_method" value="DELETE">
