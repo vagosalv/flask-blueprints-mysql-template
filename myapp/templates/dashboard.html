@@ -19,7 +19,7 @@
         <td>{{article[0]}}</td>
         <td>{{article[1]}}</td>
         <td>{{article[2]}}</td>
-        <td>{{article[3]}}</td>
+        <td>{{article[4]}}</td>
         {% if session['username'] == article.author %}
         <td><a href="/p13alva/edit_article/{{article.id}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
@@ -43,9 +43,9 @@
     </tr>
     {% for comment in comments %}
       <tr>
-        <td>{{comment.id}}</td>
-        <td>{{comment.author}}</td>
-        <td>{{comment.create_date}}</td>
+        <td>{{comment[1]}}</td>
+        <td>{{comment[2]}}</td>
+        <td>{{comment[3]}}</td>
         {% if session['username'] == comment.author %}
         <td><a href="edit_comment/{{comment.id}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
