@@ -46,6 +46,7 @@ def article(id):
     #Get Article
     result = c.execute("SELECT * FROM articles WHERE id = %s", [id])
     #Commit
+    comment(id)#auto mphke
     article = c.fetchone()
     return render_template('article.html', article=article)
 
