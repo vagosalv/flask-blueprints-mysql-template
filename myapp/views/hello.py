@@ -207,8 +207,8 @@ def edit_article(id):
     #Get form
     form = ArticleForm(request.form)
     #populate article form fields
-    form.title.data = article['title']
-    form.body.data = article['body']
+    form.title.data = article[1]
+    form.body.data = article[3]
 
     if request.method == 'POST' and form.validate():
         title = request.form['title']
