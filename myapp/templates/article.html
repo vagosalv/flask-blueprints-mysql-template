@@ -2,17 +2,17 @@
 
 {% block body %}
 
-<h1>{{article.title}}</h1>
-<small>Written by {{article.author}} on {{article.create_date}}</small>
+<h1>{{article[1]}}</h1>
+<small>Written by {{article[2]}} on {{article.[4]}}</small>
 <hr>
 <div>
-  {{article.body | safe}}
+  {{article[3] | safe}}
 </div>
 <br></br>
 <hr>
 <h2>Comments</h2>
 <div>
-  {{comment.body | safe}}
+  {{comment[2] | safe}}
 </div>
 <a class="btn btn-success" href="/p13alva/add_comments"> Add Comments</a>
 <a class="btn btn-success" href="/p13alva/comments"> Show Comments</a>
