@@ -50,15 +50,6 @@ def article(id):
     article = c.fetchone()
     return render_template('article.html', article=article)
 
-def show_comment(id):
-    c = mysql.db.cursor()
-    #Get Article
-    result = c.execute("SELECT * FROM comments WHERE article_id = %s", [id])
-    #Commit
-    #comment(id)auto mphke
-    comment = c.fetchone()
-    return render_template('article.html', comment=comment)
-
 
 
 #klash gia elenxo ths formas
