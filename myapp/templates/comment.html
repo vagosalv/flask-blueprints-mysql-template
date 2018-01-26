@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<h3>{{comment.author}}</h3>
-<small>Written by {{comment.author}} on {{comment.create_date}}</small>
+<h3>{{comment[1]}}</h3>
+<small>Written by {{comment[1]}} on {{comment[3]}}</small>
 <hr>
 <div>
-  {{comment.body | safe}}
+  {{comment[2] | safe}}
 </div>
 <br></br>
 <hr>
