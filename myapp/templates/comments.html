@@ -12,15 +12,15 @@
   </tr>
   {% for comment in comments %}
     <tr>
-      <td>{{comment.id}}</td>
-      <td>{{comment.author}}</td>
-      <td>{{comment.create_date}}</td>
-      <td>{{comment.body | safe}}</td>
-      <td>{{comment.article_id}}</td>
-      {% if session['username'] == comment.author %}
-      <td><a href="p13alva/edit_comment/{{comment.id}}" class="btn btn-default pull-right">Edit</a></td>
+      <td>{{comment[0]}}</td>
+      <td>{{comment[1]}}</td>
+      <td>{{comment[3]}}</td>
+      <td>{{comment[2] | safe}}</td>
+      <td>{{comment[4]}}</td>
+      {% if session['username'] == comment[1] %}
+      <td><a href="p13alva/edit_comment/{{comment[0]}}" class="btn btn-default pull-right">Edit</a></td>
       <td>
-        <form action="{{url_for('hello.delete_comment', id=comment.id)}}" method="post">
+        <form action="{{url_for('hello.delete_comment', id=comment[0])}}" method="post">
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" value="Delete" class="btn btn-danger">
       {% endif %}
