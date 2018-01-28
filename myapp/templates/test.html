@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>{{article[1]}}</h1>
+<small>Written by {{article[2]}} on {{article[4]}}</small>
+<hr>
+<div>
+  {{article[3] | safe}}
+  {{article[5] | safe}}
+</div>
+<br></br>
+<hr>
+<h2>Comments</h2>
+
+<a class="btn btn-success" href="/p13alva/add_comments"> Add Comments</a>
+<a class="btn btn-success" href="/p13alva/comments"> Show Comments</a>
+
+{% endblock %}
