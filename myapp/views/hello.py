@@ -299,7 +299,7 @@ def add_comment():
         #Create cursor
         c = mysql.db.cursor()
         #execute
-        c.execute("INSERT INTO comments(author, body, article_id) VALUES(%s, %s, %s)", (session['username'], body, 1))
+        c.execute("INSERT INTO comments(author, body, article_id) VALUES(%s, %s, %s)", (session['username'], body, articles.id))
         #commit
         mysql.db.commit()
         #close connection
