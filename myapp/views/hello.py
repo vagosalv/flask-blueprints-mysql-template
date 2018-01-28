@@ -14,11 +14,11 @@ hello = Blueprint('hello',__name__)
 
 # Gia otan anoigw to article na emfanizei to swsto periexomeno
 @hello.route('/test/<string:id>/')
-def article(id):
+def test(id):
     #Create cursor
     c = mysql.db.cursor()
     #Get Article
-    result = c.execute("SELECT * FROM articles LEFT JOIN comments ON comments.article_id = articles.id and article.id=%s", [id])
+    result = c.execute("SELECT * FROM articles LEFT JOIN comments ON comments.article_id = articles.id and article.id = %s ", [id])
     #Commit
     article = c.fetchone()
     return render_template('test.html', article=article)
