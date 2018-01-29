@@ -26,7 +26,7 @@ def test(id):
 
 	#Commit
 	article = c.fetchone()
-return render_template('test.html', article=article)
+	return render_template('test.html', article=article)
 
 
 #arxikh
