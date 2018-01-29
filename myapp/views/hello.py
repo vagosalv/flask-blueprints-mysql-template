@@ -291,7 +291,7 @@ def comment(id):
 #Add comment
 @hello.route('/add_comments/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
-def add_comment(article_id):
+def add_comment(id):
 
     form = CommentForm(request.form)
     if request.method == 'POST' and form.validate():
