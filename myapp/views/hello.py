@@ -61,12 +61,17 @@ def articles():
 @hello.route('/article/<string:id>/')
 def article(id):
     #Create cursor
-    c = mysql.db.cursor()
-    #Get Article
-    result = c.execute("SELECT * FROM articles WHERE id = %s", [id])
-    #Commit
-    article = c.fetchone()
-    return render_template('article.html', article=article)
+	c = mysql.db.cursor()
+	#Get Article
+	result = c.execute("SELECT * FROM comments WHERE article_id = %s", [id])
+	if result > 0 :
+		result = c.execute("SELECT articles.* , comments.* FROM articles, comments WHERE articles.id = %s and comments.article_id = articles.id ",[id])
+	else:
+		result = c.execute("SELECT * FROM articles WHERE id = %s", [id])	
+
+	#Commit
+	article = c.fetchone()
+	return render_template('test.html', article=article)
 
 
 
