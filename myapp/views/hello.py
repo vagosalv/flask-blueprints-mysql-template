@@ -18,7 +18,7 @@ def test(id):
     #Create cursor
     c = mysql.db.cursor()
     #Get Article
-    result = c.execute("SELECT articles.* , comments.* FROM articles, comments WHERE articles.id = %s and comments.article_id = articles.id ",[id])
+    result = c.execute("SELECT articles.* , comments.* FROM articles, comments WHERE articles.id = %s or comments.article_id = articles.id ",[id])
     #Commit
     article = c.fetchone()
     return render_template('test.html', article=article)
