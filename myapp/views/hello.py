@@ -18,7 +18,7 @@ def test(id):
     #Create cursor
     c = mysql.db.cursor()
     #Get Article
-    result = c.execute("SELECT * FROM articles LEFT JOIN comments ON comments.article_id = %s  ", [id])
+    result = c.execute("SELECT * FROM articles LEFT JOIN comments ON articles.id = %s  ", [id])
     #Commit
     article = c.fetchone()
     return render_template('test.html', article=article)
