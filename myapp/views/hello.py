@@ -289,7 +289,7 @@ def comment(id):
 
 
 #Add comment
-@hello.route('/add_comments/<string:article_id>', methods=['GET', 'POST'])
+@hello.route('/add_comments/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
 def add_comment(article_id):
 
@@ -299,7 +299,7 @@ def add_comment(article_id):
         #Create cursor
         c = mysql.db.cursor()
         #execute
-        c.execute("INSERT INTO comments(author, body, article_id) VALUES(%s, %s, %s)", (session['username'], body, [article_id]))
+        c.execute("INSERT INTO comments(author, body, article_id) VALUES(%s, %s, %s)", (session['username'], body, [id]))
         #commit
         mysql.db.commit()
         #close connection
