@@ -15,18 +15,18 @@ hello = Blueprint('hello',__name__)
 # Gia otan anoigw to article na emfanizei to swsto periexomeno
 @hello.route('/test/<string:id>/')
 def test(id):
-    #Create cursor
-    c = mysql.db.cursor()
-    #Get Article
-    result = c.execute("SELECT * FROM articles WHERE id = %s", [id])
-    if result > 0 :
-    	result = c.execute("SELECT articles.* , comments.* FROM articles, comments WHERE articles.id = %s and comments.article_id = articles.id ",[id])
-    else:
-	result = c.execute("SELECT * FROM articles WHERE id = %s", [id])	
+	#Create cursor
+	c = mysql.db.cursor()
+	#Get Article
+	result = c.execute("SELECT * FROM articles WHERE id = %s", [id])
+	if result > 0 :
+		result = c.execute("SELECT articles.* , comments.* FROM articles, comments WHERE articles.id = %s and comments.article_id = articles.id ",[id])
+	else:
+		result = c.execute("SELECT * FROM articles WHERE id = %s", [id])	
 
-    #Commit
-    article = c.fetchone()
-    return render_template('test.html', article=article)
+	#Commit
+	article = c.fetchone()
+return render_template('test.html', article=article)
 
 
 #arxikh
