@@ -10,7 +10,7 @@ from ..app import mysql
 
 hello = Blueprint('hello',__name__)
 
-
+#dokimh
 
 # Gia otan anoigw to article na emfanizei to swsto periexomeno
 @hello.route('/test/<string:id>/')
