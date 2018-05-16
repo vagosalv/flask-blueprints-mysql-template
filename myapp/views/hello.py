@@ -8,7 +8,7 @@ from flask_mysqldb import MySQL
 from ..app import mysql
 
 from .users import is_logged_in
-
+from .articles import articles
 
 hello = Blueprint('hello',__name__)
 
@@ -45,18 +45,8 @@ def dashboard():
 
 #Articles
 @hello.route('/articles')
+@articles
 def articles():
-	#Create cursor
-	c = mysql.db.cursor()
-	#Get Articles
-	result = c.execute("SELECT * FROM articles")
-	articles = c.fetchall()
-	if result > 0 :
-		return render_template('articles.html', articles=articles)
-	else:
-		msg = 'No articles Found'
-		return render_template('articles.html', msg=msg)
-	#close connection
-	c.close()
+	return render_template('articles.html')
 
 
