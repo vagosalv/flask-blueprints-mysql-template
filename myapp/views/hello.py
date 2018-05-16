@@ -58,7 +58,5 @@ def articles():
         return render_template('articles.html', msg=msg)
     #close connection
 c.close()
-	
-
 
 
