@@ -14,7 +14,7 @@ hello = Blueprint('hello',__name__)
 
 
 
-
+@articles
 
 #arxikh
 @hello.route('/')
@@ -43,7 +43,6 @@ def dashboard():
     #close connection
     c.close()
 
-@articles
 	
 
 
