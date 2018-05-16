@@ -4,6 +4,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 from flask_mysqldb import MySQL
 from ..app import mysql
+from .users import is_logged_in
 
 
 com = Blueprint('com',__name__)
@@ -13,7 +14,7 @@ class CommentForm(Form):
     body = TextAreaField('Body', [validators.Length(min=10)])
 
 #Comments
-@hello.route('/comments')
+@com.route('/comments')
 def comments():
     #Create cursor
     c = mysql.db.cursor()
@@ -32,7 +33,7 @@ def comments():
 
 
 #Add comment
-@hello.route('/add_comments/<string:article_id>', methods=['GET', 'POST'])
+@com.route('/add_comments/<string:article_id>', methods=['GET', 'POST'])
 @is_logged_in
 def add_comment(article_id):
 
@@ -54,7 +55,7 @@ def add_comment(article_id):
 
 
 #Edit comment
-@hello.route('/edit_comment/<string:id>', methods=['GET', 'POST'])
+@com.route('/edit_comment/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
 def edit_comment(id):
     #create cursor
@@ -83,7 +84,7 @@ def edit_comment(id):
     return render_template('edit_comment.html', form=form)
 
 #Delete comment
-@hello.route('/delete_comment/<string:id>', methods=['POST'])
+@com.route('/delete_comment/<string:id>', methods=['POST'])
 @is_logged_in
 def delete_comment(id):
     #create cursor
