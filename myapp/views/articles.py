@@ -4,7 +4,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 from flask_mysqldb import MySQL
 from ..app import mysql
-
+from .users import is_logged_in
 
 art = Blueprint('art',__name__)
 
@@ -32,7 +32,7 @@ def articles():
 
 	
 	# Gia otan anoigw to article na emfanizei to swsto periexomeno
-@hello.route('/test/<string:id>/')
+@art.route('/test/<string:id>/')
 def test(id):
 	#Create cursor
 	c = mysql.db.cursor()
@@ -65,7 +65,7 @@ def article(id):
 	
 	
 #gia otan anoigw to article na emfanizontai ta swsta comments
-@hello.route('/comment/<string:id>/')
+@art.route('/comment/<string:id>/')
 def comment(id):
     #Create cursor
     c = mysql.db.cursor()
