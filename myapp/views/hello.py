@@ -14,7 +14,7 @@ hello = Blueprint('hello',__name__)
 
 
 
-@articles
+
 
 #arxikh
 @hello.route('/')
