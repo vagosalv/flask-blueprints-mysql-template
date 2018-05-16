@@ -6,7 +6,7 @@ from flask_mysqldb import MySQL
 from ..app import mysql
 from .users import is_logged_in
 
-art = Blueprint('art',__name__)
+hello = Blueprint('hello',__name__)
 
 
 class ArticleForm(Form):
@@ -15,7 +15,7 @@ class ArticleForm(Form):
 
 
 #Articles
-@art.route('/articles')
+@hello.route('/articles')
 def articles():
     #Create cursor
     c = mysql.db.cursor()
@@ -32,7 +32,7 @@ def articles():
 
 	
 	# Gia otan anoigw to article na emfanizei to swsto periexomeno
-@art.route('/test/<string:id>/')
+@hello.route('/test/<string:id>/')
 def test(id):
 	#Create cursor
 	c = mysql.db.cursor()
@@ -48,7 +48,7 @@ def test(id):
 	return render_template('test.html', article=article)
 
 # Gia otan anoigw to article na emfanizei to swsto periexomeno
-@art.route('/article/<string:id>/')
+@hello.route('/article/<string:id>/')
 def article(id):
     #Create cursor
 	c = mysql.db.cursor()
@@ -65,7 +65,7 @@ def article(id):
 	
 	
 #gia otan anoigw to article na emfanizontai ta swsta comments
-@art.route('/comment/<string:id>/')
+@hello.route('/comment/<string:id>/')
 def comment(id):
     #Create cursor
     c = mysql.db.cursor()
@@ -76,7 +76,7 @@ def comment(id):
 
 	
 	#Add article
-@art.route('/add_article', methods=['GET', 'POST'])
+@hello.route('/add_article', methods=['GET', 'POST'])
 @is_logged_in
 def add_article():
     form = ArticleForm(request.form)
@@ -97,7 +97,7 @@ def add_article():
     return render_template('add_article.html', form=form)
 
 #Edit article
-@art.route('/edit_article/<string:id>', methods=['GET', 'POST'])
+@hello.route('/edit_article/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
 def edit_article(id):
     #create cursor
@@ -129,7 +129,7 @@ def edit_article(id):
 
 
 #Delete article
-@art.route('/delete_article/<string:id>', methods=['POST'])
+@hello.route('/delete_article/<string:id>', methods=['POST'])
 @is_logged_in
 def delete_article(id):
     #create cursor
