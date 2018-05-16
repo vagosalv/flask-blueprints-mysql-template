@@ -5,6 +5,8 @@ from functools import wraps
 from flask_mysqldb import MySQL
 from ..app import mysql
 from .users import is_logged_in
+#twra to evala
+from .comments import *
 
 hello = Blueprint('hello',__name__)
 
