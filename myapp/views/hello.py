@@ -7,13 +7,13 @@ from flask_mysqldb import MySQL
 
 from ..app import mysql
 
-from .users import *
-from .articles import *
+
 
 hello = Blueprint('hello',__name__)
 
 
-
+from .users import *
+from .articles import *
 
 
 #arxikh
