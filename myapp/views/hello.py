@@ -43,10 +43,6 @@ def dashboard():
     #close connection
     c.close()
 
-#Articles
-@hello.route('/articles')
-@articles
-def articles():
-	return render_template('articles.html', msg=msg)
+
 
 
