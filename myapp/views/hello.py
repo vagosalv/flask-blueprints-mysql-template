@@ -47,6 +47,6 @@ def dashboard():
 @hello.route('/articles')
 @articles
 def articles():
-	return render_template('articles.html')
+	return render_template('articles.html', msg=msg)
 
 
