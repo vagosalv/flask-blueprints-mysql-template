@@ -7,6 +7,7 @@ from flask_mysqldb import MySQL
 
 from ..app import mysql
 
+from users import is_logged_in
 
 hello = Blueprint('hello',__name__)
 
