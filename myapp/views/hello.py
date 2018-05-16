@@ -46,17 +46,17 @@ def dashboard():
 #Articles
 @hello.route('/articles')
 def articles():
-    #Create cursor
-    c = mysql.db.cursor()
-    #Get Articles
-    result = c.execute("SELECT * FROM articles")
-    articles = c.fetchall()
-    if result > 0 :
-        return render_template('articles.html', articles=articles)
-    else:
-        msg = 'No articles Found'
-        return render_template('articles.html', msg=msg)
-    #close connection
-c.close()
+	#Create cursor
+	c = mysql.db.cursor()
+	#Get Articles
+	result = c.execute("SELECT * FROM articles")
+	articles = c.fetchall()
+	if result > 0 :
+		return render_template('articles.html', articles=articles)
+	else:
+		msg = 'No articles Found'
+		return render_template('articles.html', msg=msg)
+	#close connection
+	c.close()
 
 
