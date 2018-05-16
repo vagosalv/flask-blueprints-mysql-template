@@ -6,7 +6,7 @@ from flask_mysqldb import MySQL
 from ..app import mysql
 
 
-us = Blueprint('us',__name__)
+hello = Blueprint('hello',__name__)
 
 #klash gia elenxo ths formas
 class RegisterForm(Form):
@@ -21,7 +21,7 @@ class RegisterForm(Form):
 
 
 #User register
-@us.route('/register', methods=['GET', 'POST'])
+@hello.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -52,7 +52,7 @@ def register():
 
 
 #User login
-@us.route('/login', methods=['GET', 'POST'])
+@hello.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         #Get form fields
@@ -102,7 +102,7 @@ def is_logged_in(f):
 
 
 #Logout
-@us.route('/logout')
+@hello.route('/logout')
 @is_logged_in
 def logaout():
     session.clear()
