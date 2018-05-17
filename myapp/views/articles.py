@@ -8,7 +8,7 @@ from .users import is_logged_in
 #twra to evala
 from .comments import *
 
-hello = Blueprint('art',__name__, template_folder='templates')
+art = Blueprint('art',__name__, template_folder='templates')
 
 
 class ArticleForm(Form):
@@ -17,7 +17,7 @@ class ArticleForm(Form):
 
 
 #Articles
-@hello.route('/articles')
+@art.route('/articles')
 def articles():
     #Create cursor
     c = mysql.db.cursor()
@@ -34,7 +34,7 @@ def articles():
 
 	
 	# Gia otan anoigw to article na emfanizei to swsto periexomeno
-@hello.route('/test/<string:id>/')
+@art.route('/test/<string:id>/')
 def test(id):
 	#Create cursor
 	c = mysql.db.cursor()
@@ -50,7 +50,7 @@ def test(id):
 	return render_template('test.html', article=article)
 
 # Gia otan anoigw to article na emfanizei to swsto periexomeno
-@hello.route('/article/<string:id>/')
+@art.route('/article/<string:id>/')
 def article(id):
     #Create cursor
 	c = mysql.db.cursor()
@@ -67,7 +67,7 @@ def article(id):
 	
 	
 #gia otan anoigw to article na emfanizontai ta swsta comments
-@hello.route('/comment/<string:id>/')
+@art.route('/comment/<string:id>/')
 def comment(id):
     #Create cursor
     c = mysql.db.cursor()
@@ -78,7 +78,7 @@ def comment(id):
 
 	
 	#Add article
-@hello.route('/add_article', methods=['GET', 'POST'])
+@art.route('/add_article', methods=['GET', 'POST'])
 @is_logged_in
 def add_article():
     form = ArticleForm(request.form)
@@ -99,7 +99,7 @@ def add_article():
     return render_template('add_article.html', form=form)
 
 #Edit article
-@hello.route('/edit_article/<string:id>', methods=['GET', 'POST'])
+@art.route('/edit_article/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
 def edit_article(id):
     #create cursor
@@ -131,7 +131,7 @@ def edit_article(id):
 
 
 #Delete article
-@hello.route('/delete_article/<string:id>', methods=['POST'])
+@art.route('/delete_article/<string:id>', methods=['POST'])
 @is_logged_in
 def delete_article(id):
     #create cursor
