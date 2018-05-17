@@ -1,4 +1,5 @@
 from .hello import hello
+from .articles import art
 
 
-blueprints = [hello]
+blueprints = [hello,art]
