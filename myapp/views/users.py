@@ -6,7 +6,7 @@ from flask_mysqldb import MySQL
 from ..app import mysql
 
 
-hello = Blueprint('hello',__name__)
+hello = Blueprint('us',__name__)
 
 #klash gia elenxo ths formas
 class RegisterForm(Form):
