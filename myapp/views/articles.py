@@ -8,7 +8,7 @@ from .users import is_logged_in
 #twra to evala
 from .comments import *
 
-hello = Blueprint('art',__name__)
+hello = Blueprint('art',__name__, template_folder='templates')
 
 
 class ArticleForm(Form):
