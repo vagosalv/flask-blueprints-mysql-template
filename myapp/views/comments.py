@@ -7,7 +7,7 @@ from ..app import mysql
 from .users import is_logged_in
 
 
-hello = Blueprint('com',__name__)
+hello = Blueprint('com',__name__, template_folder='templates')
 
 #Commnts Form class
 class CommentForm(Form):
