@@ -47,7 +47,7 @@ def register():
         redirect(url_for('hello.index_page'))
 
 
-        return redirect(url_for('hello.login'))
+        return redirect(url_for('us.login'))
     return render_template('register.html', form = form)
 
 
@@ -97,7 +97,7 @@ def is_logged_in(f):
             return f(*args, **kwargs)
         else:
             flash('Unauthorized, Please login', 'danger')
-            return redirect(url_for('hello.login'))
+            return redirect(url_for('us.login'))
     return wrap
 
 
@@ -107,4 +107,4 @@ def is_logged_in(f):
 def logout():
     session.clear()
     flash('You are now logged out', 'success')
-    return redirect(url_for('hello.login'))
+    return redirect(url_for('us.login'))
