@@ -3,21 +3,23 @@
 {% block body %}
 
 <h1>{{article[1]}}</h1>
-<h1>id={{article[0]}}</h1>
 <small>Written by {{article[2]}} on {{article[4]}}</small>
 <hr>
 <div>
   {{article[3] | safe}}
-  <h2>comment id ={{article[5] | safe}}</h2>
-  <h2>comment author={{article[6] | safe}}</h2>
-  <h2>comment body={{article[7] | safe}}</h2>
-  <h2>comment create date={{article[8] | safe}}</h2>
-  <h2>comment article_id={{article[9] | safe}}</h2>
+  
+  
 
 </div>
 <br></br>
 <hr>
 <h2>Comments</h2>
+
+<h2>comment body={{article[7] | safe}}</h2>
+<small>comment author={{article[6] | safe}}</small>
+<h2>comment create date={{article[8] | safe}}</h2>
+
+<br></br>
 
 <a class="btn btn-success" href="/p13alva/add_comments/{{article[0]}}"> Add Comments</a>
 <a class="btn btn-success" href="/p13alva/comments"> Show Comments</a>
