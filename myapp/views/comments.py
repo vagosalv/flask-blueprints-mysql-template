@@ -79,7 +79,7 @@ def edit_comment(id):
         #close connection
         c.close()
         flash('Comment Updated', 'success')
-        return redirect(url_for('com.dashboard'))
+        return redirect(url_for('hello.dashboard'))
 
     return render_template('edit_comment.html', form=form)
 
