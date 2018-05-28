@@ -75,7 +75,7 @@ def login():
                 session['username'] = username
 
                 flash('You are now logged in', 'success')
-                return redirect(url_for('hello.dashboard'))
+                return redirect(url_for('us.dashboard'))
             else:
                 error = 'Invalid login'
                 return render_template('login.html', error=error )
