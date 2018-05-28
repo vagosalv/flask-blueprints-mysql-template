@@ -16,11 +16,13 @@
 <h2>Comments</h2>
 
 {% for article in articles %}
-  <br></br>
+<br></br>
+<div>
   {{article[7] | safe}}
   <small>{{article[6] | safe}}</small>
   <small>{{article[8] | safe}}</small>
-  <br></br>
+</div>
+<br></br>
 {% endfor %}
 
 <a class="btn btn-success" href="/p13alva/add_comments/{{article[0]}}"> Add Comments</a>
