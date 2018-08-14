@@ -1,26 +1,35 @@
-
 {% extends 'layout.html' %}
 
 {% block body %}
+<!-- gia to javascript plugin to facebook-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-<h1>{{article[1]}}</h1>
-
-<small>Written by {{article[2]}} on {{article[4]}}</small>
+<h1>{{article.title}}</h1>
+<small>Written by {{article.author}} on {{article.create_date}}</small>
 <hr>
 <div>
-  {{article[3] | safe}}
-  <h2>comment id ={{article[5] | safe}}</h2>
-  <h2>comment author={{article[6] | safe}}</h2>
-  <h2>comment body={{article[7] | safe}}</h2>
-  <h2>comment create date={{article[8] | safe}}</h2>
-  <h2>comment article_id={{article[9] | safe}}</h2>
-
+  {{article.body | safe}}
 </div>
+
+<!-- to koumpi share-->
+<div class="fb-share-button" data-href="http://dilab77.ionio.gr/p13alva/article/&#123;&#123;article.id&#125;&#125;" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdilab77.ionio.gr%2Fp13alva%2Farticle%2F%257B%257Barticle.id%257D%257D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+
+
 <br></br>
 <hr>
 <h2>Comments</h2>
-
-<a class="btn btn-success" href="/p13alva/add_comments/{{article[0]}}"> Add Comments</a>
-<a class="btn btn-success" href="/p13alva/comments"> Show Comments</a>
+<div>
+  {{ comment.body | safe}}
+  {{ article.body | safe}}
+</div>
+<a class="btn btn-success" href="/add_comments"> Add Comments</a>
+<a class="btn btn-success" href="/comments"> Show Comments</a>
 
 {% endblock %}
