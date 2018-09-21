@@ -72,8 +72,10 @@ def comment(id):
     #Create cursor
     c = mysql.db.cursor()
     #Get Comment
-    result = c.execute("SELECT * FROM comments WHERE id = %s", [id])
-    comment = c.fetchone()
+    while result is not None:
+    	result = c.execute("SELECT * FROM comments WHERE id = %s", [id])
+    	comment = c.fetchone()
+	
     return render_template('comment.html', comment=comment)	
 
 	
