@@ -26,10 +26,11 @@
 </div>
 <br></br>
 
+<div>
 {% for article in articles %}
     <small>{{article[8] | safe}}</small>
 {% endfor %}
-
+</div>
 
 <hr>
 <a class="btn btn-success" href="/p13alva/add_comments/{{article[0]}}"> Add Comments</a>
