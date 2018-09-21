@@ -73,7 +73,7 @@ def comment(id):
     c = mysql.db.cursor()
     #Get Comment
     result = c.execute("SELECT * FROM comments WHERE id = %s", [id])
-    comment = c.fetchall()
+    comment = c.fetchone()
     return render_template('comment.html', comment=comment)	
 
 	
