@@ -63,7 +63,7 @@ def article(id):
 
 	#Commit
 	article = c.fetchone()
-	return render_template('test.html', article=article)
+	return render_template('article.html', article=article)
 	
 	
 #gia otan anoigw to article na emfanizontai ta swsta comments
