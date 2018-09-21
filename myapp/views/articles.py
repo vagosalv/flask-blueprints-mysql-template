@@ -62,7 +62,7 @@ def article(id):
 		result = c.execute("SELECT * FROM articles WHERE id = %s", [id])	
 
 	#Commit
-	article = c.fetchone()
+	article = c.fetchall()
 	return render_template('article.html', article=article)
 	
 	
