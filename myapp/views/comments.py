@@ -66,7 +66,7 @@ def edit_comment(id):
     #Get form
     form = CommentForm(request.form)
     #populate comment form fields
-    form.body.data = comment[3]
+    form.body.data = comment[2]
 
     if request.method == 'POST' and form.validate():
         body = request.form['body']
