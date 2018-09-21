@@ -66,15 +66,7 @@ def article(id):
 	return render_template('article.html', article=article)
 	
 	
-#gia otan anoigw to article na emfanizontai ta swsta comments
-@art.route('/comment/<string:id>/')
-def comment(id):
-    #Create cursor
-    c = mysql.db.cursor()
-    #Get Comment
-    result = c.execute("SELECT * FROM comments WHERE id = %s", [id])
-    comment = c.fetchone()
-    return render_template('comment.html', comment=comment)	
+
 
 	
 	#Add article
